@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/auction.iml" filepath="$PROJECT_DIR$/.idea/auction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auction-core.iml" filepath="$PROJECT_DIR$/.idea/modules/auction-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auction-core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/auction-core_main.iml" group="auction-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/auction-core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/auction-core_test.iml" group="auction-core" />
+    </modules>
+  </component>
+</project>
