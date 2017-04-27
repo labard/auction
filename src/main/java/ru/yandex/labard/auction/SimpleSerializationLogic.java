@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 class SimpleSerializationLogic implements SerializationLogic {
     @Override
     public Request parse(String string) {
+        if (string.isEmpty()) return null;
         final String[] data = string.split(" ");
         if (data.length < 3) throw new IllegalArgumentException("Not enough data for parsing " + string);
         final int amount = Integer.parseInt(data[1]);
