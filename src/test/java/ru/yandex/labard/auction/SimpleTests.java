@@ -18,7 +18,29 @@ public class SimpleTests {
             add(new Request(100, new BigDecimal("50.50"), RequestType.SELL));
             add(new Request(100, new BigDecimal("200.20"), RequestType.SELL));
         }};
+        Collections.sort(sellRequests);
         Assert.assertTrue(Auction.getAmountForSale(sellRequests, buyRequest) == 220);
+    }
+
+    @Test
+    public void amountForSaleTestDuplicates() {
+        final Request buyRequest = new Request(100, new BigDecimal("100.20"), RequestType.BUY);
+        List<Request> sellRequests = new ArrayList<Request>() {{
+            add(new Request(100, new BigDecimal("50.50"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("50.50"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("200.20"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("100.20"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("100.20"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("200.20"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("50.50"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("100.20"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("200.20"), RequestType.SELL));
+            add(new Request(20, new BigDecimal("100"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("50.50"), RequestType.SELL));
+            add(new Request(100, new BigDecimal("200.20"), RequestType.SELL));
+        }};
+        Collections.sort(sellRequests);
+        Assert.assertTrue(Auction.getAmountForSale(sellRequests, buyRequest) == 720);
     }
 
     @Test
@@ -30,6 +52,7 @@ public class SimpleTests {
             add(new Request(100, new BigDecimal("50.50"), RequestType.SELL));
             add(new Request(100, new BigDecimal("200.20"), RequestType.SELL));
         }};
+        Collections.sort(sellRequests);
         Assert.assertTrue(Auction.getAmountForSale(sellRequests, buyRequest) == 0);
     }
 

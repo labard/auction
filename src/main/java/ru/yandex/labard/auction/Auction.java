@@ -1,6 +1,8 @@
 package ru.yandex.labard.auction;
 
 
+import sun.java2d.ScreenUpdateManager;
+
 import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -61,11 +63,18 @@ public class Auction {
         return maxDealAmount;
     }
 
+    //только для упорядоченного по возрастанию списка
     //считаем возможное количество продаж по указанной цене
     public static int getAmountForSale(List<Request> saleList, Request buyRequest) {
-        return saleList.stream()
-                .filter(sellRequest -> buyRequest.compareTo(sellRequest) >= 0)
-                .mapToInt(Request::getAmount).sum();
+        int sum = 0;
+        for (Request sellRequest : saleList) {
+            if (buyRequest.compareTo(sellRequest) >= 0) {
+                sum += sellRequest.getAmount();
+            } else {
+                break;
+            }
+        }
+        return sum;
     }
 
 
